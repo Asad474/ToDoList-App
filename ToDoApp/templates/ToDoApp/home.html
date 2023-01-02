@@ -4,12 +4,15 @@
     <div class="input-task">
         <form action="" method="post">
             {%csrf_token%}
-            {{form}}
+            {{form.task}}
             <div class="d-grid">
                 <button class="btn btn-md btn-primary mt-2" type="Submit" id="button-addon2">Submit</button>
             </div>
         </form>
     </div>          
+
+    <div class="alert-messages">
+    </div>
 
     <table class="table text-white text-center mt-5">
         <thead class="fs-2 fw-bolder">
@@ -17,14 +20,23 @@
                 <th scope="col">Tasks</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody class="fw-bold">
             {% for t in tasks %}
                 <tr>
-                    <td>{{t.task}}</td>
+                    {% if t.complete %}
+                        <td><strike>{{t.task}} (Updated)</strike></td>
+                     
+                    {%else%}    
+                        <td><span>{{t.task}}</span></td> 
+                        
+                    {% endif %}
+                    <td>{{t.updated}}</td>
                     <td><a class="btn btn-warning" href="{% url 'updatetask' t.id %}">Update</a></td>
-                    <td><a class="btn btn-danger" href="{% url 'deletetask' t.id %}">Delete</a></td>
+                    <td><a class="btn btn-danger" href="{% url 'deletetask' t.id %}" id="delete-task">Delete</a></td>
                 </tr> 
             {% endfor %}
         </tbody>

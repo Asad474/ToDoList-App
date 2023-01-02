@@ -6,5 +6,5 @@ class TaskForm(ModelForm):
         model = Task 
         fields = '__all__'
         widgets = { 
-            'task' : TextInput(attrs={'class' : 'form-control' , 'placeholder' : 'Add new task...'})
+            'task' : TextInput(attrs={'class' : 'form-control' , 'placeholder' : 'Add new task...'}),
         }

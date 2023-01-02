@@ -19,7 +19,6 @@ def home(request):
 
 def updatetask(request,pk):
     task = Task.objects.get(id = pk)
-    tasks = Task.objects.all()
     form = TaskForm(instance=task)
 
     if request.method == 'POST':
@@ -28,8 +27,8 @@ def updatetask(request,pk):
             form.save()
             return redirect('home')
 
-    context = {'tasks':tasks , 'form':form}
-    return render(request, 'ToDoApp/home.html', context)
+    context = {'form':form}
+    return render(request, 'ToDoApp/update.html', context)
 
 
 def deletetask(request,pk):

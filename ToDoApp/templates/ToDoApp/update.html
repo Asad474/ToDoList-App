@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="input-task">
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form.task}}
+            <label class="text-white my-3 fs-4 fw-bold">{{form.complete.label}}</label>
+            {{form.complete}}
+            <div class="d-grid">
+                <button class="btn btn-md btn-primary mt-2" type="Submit" id="button-addon2">Update</button>
+            </div>
+        </form>
+    </div>     
+{% endblock %}
