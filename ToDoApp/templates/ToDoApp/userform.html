@@ -10,15 +10,16 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 {%csrf_token%}
-                                <h2 class="fw-bold pb-5 text-uppercase">Update your profile</h2>
+                                <h1 class="fw-bold pb-5 text-uppercase">Update your profile</h1>
 
                                 {%for f in form%}
-                                    <div class="form-outline form-white pt-4">
-                                        {{f}}
+                                    <div class="form-group row pt-4">
+                                        <label for="" class="fs-5 fw-bolder col-sm-2 col-form-label">{{f.label}} - </label>
+                                        <div class="col">{{f}}</div>
                                     </div>
                                 {%endfor%}
                 
-                                <button class="btn btn-outline-light btn-lg mt-5" type="submit">Update</button>
+                                <button class="btn btn-outline-light btn-block btn-lg mt-5" type="submit">Update</button>
                 
                             </div>
                         </form>        

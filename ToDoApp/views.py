@@ -158,12 +158,20 @@ def deletetask(request,pk):
 
 @login_required(login_url = 'loginuser')
 def userprofile(request,pk):
-    u = MyUser.objects.get(id = pk)   
+    u = MyUser.objects.get(id = pk)  
+    total_tasks = u.task_set.all().count()
+    completed_tasks = u.task_set.filter(complete = True).count()
+    pending_tasks = total_tasks - completed_tasks
 
     if request.user.id != u.id:
         return HttpResponseForbidden('You are not authorized to access this page !!!')
 
-    context = {'u' : u}
+    context = {
+        'u' : u,
+        'total_tasks' : total_tasks,
+        'completed_tasks' : completed_tasks, 
+        'pending_tasks' : pending_tasks,
+    }
     return render(request,'ToDoApp/user_profile.html',context)
 
 
@@ -174,6 +182,12 @@ def updateprofile(request):
 
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES, instance=user)
+        username = request.POST.get('username')
+        all_users_username = MyUser.objects.all().values('username')
+
+        if {'username' : username} in all_users_username:
+            messages.error(request, f'User with username "{username}" already exists!!!')
+
         if form.is_valid():
             form.save()
             return redirect('home')

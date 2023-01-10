@@ -6,13 +6,13 @@
             {%csrf_token%}
             {{form.task}}
             <div class="d-grid">
-                <button class="btn btn-md btn-primary mt-2 mb-3" type="Submit" id="button-addon2">Submit</button>
+                <button class="btn btn-md btn-success mt-2 mb-3" type="Submit" id="button-addon2">Submit</button>
             </div>
         </form>
     </div>          
 
     <div class="card my-5 bg-dark border border-secondary">
-        <div class="card-header bg-secondary pt-4 header-style">
+        <div class="card-header bg-primary pt-4 header-style">
             <div>
                 <span class="fs-1 fw-bolder text-white">Hello {{user.username}},</span>
                 {% if pending_tasks_count > 0 %}
@@ -24,7 +24,6 @@
 
             <div>
                 <img class="rounded-circle py-2" id="profile-pic" src="{{user.avatar.url}}" />
-                <!-- <a href="{%url 'userprofile' user.id%}" class="text-white fs-5"><span class="px-2 fs-4">@{{user.username}}</span></a><br> -->
                 <span class="text-white fs-3 fw-bold dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     @{{user.username}}
                 </span>
@@ -53,7 +52,7 @@
                   </div>  
 
                 <div class="col-auto">
-                  <button type="submit" class="btn btn-primary mb-3">Search</button>
+                  <button type="submit" class="btn btn-success mb-3">Search</button>
                 </div>
             </form>
 

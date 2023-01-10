@@ -21,6 +21,11 @@ a:hover{
     width: 100px;
 }
 
+#profile-pic-userpage{
+    height: 240px;
+    width: 220px;
+}
+
 .header-style{ 
     display: flex;
     justify-content: space-around;

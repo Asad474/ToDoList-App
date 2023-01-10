@@ -1,32 +1,34 @@
 {%extends 'main.html'%}
 
 {%block content%}
-    <style>
-        #profile-pic{
-            height: 200px;
-            width: 170px;
-        }
-
-        #edit{
-            height: 50px;
-            width: 150px;
-        }
-    </style>
-
     <section>
         <div class="container">
             <div class="text-center pb-5">
-                <a href="{{u.avatar.url}}"><img class="rounded-circle py-4" id="profile-pic" src="{{u.avatar.url}}" /></a>
+                <a href="{{u.avatar.url}}"><img class="rounded-circle py-4" id="profile-pic-userpage" src="{{u.avatar.url}}" /></a>
                 <h4 class="text-center fw-bold"><a href="{%url 'userprofile' u.id%}" class="text-info">@{{u.username}}</a></h4>
                 <h4 class="text-center fw-bold text-info">{{u.email}}</h4>
             </div>            
 
             <div class="text-center">
                 <button class="btn btn-lg btn-outline-info rounded" id="edit"><a href="{% url 'update-profile' %}" class="text-white">Edit Profile</a></button>
+                <button class="btn btn-lg btn-outline-info rounded mx-3" id="edit"><a href="{% url 'home' %}" class="text-white">Home</a></button>
             </div>
+
+            <div class="user-container mt-5">
+                <div>
+                    <h3 class="text-center text-white fw-bolder pt-3 pb-2">Bio</h3>
+                    <p class="text-white text-center fs-5 pt-3 pb-4 lh-sm">{{u.bio}}</p>
+                </div>
     
-            <h3 class="text-center text-white fw-bold pt-5 pb-2">About</h3>
-            <p class="text-white text-center fs-5 pt-3 lh-sm">{{u.bio}}</p>
+                <div>
+                    <h3 class="text-white text-center fw-bolder pt-4 pb-3">Task Details</h3>
+                    <div class="text-white text-center fs-5 mb-4">
+                        <p class="lh-sm">Total No of tasks - {{total_tasks}}</p>
+                        <p class="lh-sm">No of Completed tasks - {{completed_tasks}}</p>
+                        <p>No of Pending tasks - {{pending_tasks}}</p>
+                    </div>                    
+                </div>
+            </div>
         </div>
     </section>
 {%endblock%}
