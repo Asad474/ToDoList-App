@@ -6,39 +6,84 @@
             {%csrf_token%}
             {{form.task}}
             <div class="d-grid">
-                <button class="btn btn-md btn-primary mt-2" type="Submit" id="button-addon2">Submit</button>
+                <button class="btn btn-md btn-primary mt-2 mb-3" type="Submit" id="button-addon2">Submit</button>
             </div>
         </form>
     </div>          
 
-    <div class="alert-messages">
-    </div>
+    <div class="card my-5 bg-dark border border-secondary">
+        <div class="card-header bg-secondary pt-4 header-style">
+            <div>
+                <span class="fs-1 fw-bolder text-white">Hello {{user.username}},</span>
+                {% if pending_tasks_count > 0 %}
+                    <p class="text-white fs-4 pt-2 lh-1">You still have {{pending_tasks_count}} pending task/tasks to complete</p>
+                {% else %}    
+                    <p class="text-white fs-4 pt-2 lh-1">You completed all tasks</p>
+                {%endif%}    
+            </div>
 
-    <table class="table text-white text-center mt-5">
-        <thead class="fs-2 fw-bolder">
-            <tr>
-                <th scope="col">Tasks</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody class="fw-bold">
-            {% for t in tasks %}
-                <tr>
-                    {% if t.complete %}
-                        <td><strike>{{t.task}} (Completed)</strike></td>
-                     
-                    {%else%}    
-                        <td><span>{{t.task}}</span></td> 
-                        
-                    {% endif %}
-                    <td>{{t.updated}}</td>
-                    <td><a class="btn btn-warning" href="{% url 'updatetask' t.id %}">Update</a></td>
-                    <td><a class="btn btn-danger" href="{% url 'deletetask' t.id %}" id="delete-task">Delete</a></td>
-                </tr> 
-            {% endfor %}
-        </tbody>
-    </table>
+            <div>
+                <img class="rounded-circle py-2" id="profile-pic" src="{{user.avatar.url}}" />
+                <!-- <a href="{%url 'userprofile' user.id%}" class="text-white fs-5"><span class="px-2 fs-4">@{{user.username}}</span></a><br> -->
+                <span class="text-white fs-3 fw-bold dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    @{{user.username}}
+                </span>
+                <ul class="dropdown-menu bg-dark">
+                    <li><a class="dropdown-item text-warning" href="{% url 'userprofile' user.id %}">User Page</a></li>
+                    <li><a class="dropdown-item text-warning" href="{% url 'update-profile' %}">Edit Profile</a></li>
+                    <li><a class="dropdown-item text-warning" href="{% url 'logoutuser' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form class="row g-3 pt-3 search-filter">
+                <div class="col-auto">
+                  <input type="text" class="form-control" placeholder="Enter Tasks" name="task">
+                </div>
+
+                <div class="col-auto fs-4">
+                    <input type="radio" id="completedtasks" name="completed" value="True">
+                    <label for="completedtasks" class="text-white">Completed Tasks</label>
+                  </div>
+
+                  <div class="col-auto fs-4">
+                    <input type="radio" id="pendingtasks" name="completed" value="False">
+                    <label for="pendingtasks" class="text-white">Pending Tasks</label>
+                  </div>  
+
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+
+            <table class="table text-white text-center mt-5">
+                <thead class="fs-2 fw-bolder">
+                    <tr>
+                        <th scope="col">Tasks</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="fw-bold">
+                    {% for t in tasks %}
+                        <tr>
+                            {% if t.complete %}
+                                <td><span class="text-success text-decoration-line-through">{{t.task}} (Completed)</span></td>
+                            
+                            {%else%}    
+                                <td><span>{{t.task}}</span></td> 
+                                
+                            {% endif %}
+                            <td>{{t.updated}}</td>
+                            <td><a class="btn btn-warning" href="{% url 'updatetask' t.id %}">Update</a></td>
+                            <td><a class="btn btn-danger" href="{% url 'deletetask' t.id %}" id="delete-task">Delete</a></td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

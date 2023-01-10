@@ -2,7 +2,26 @@
     margin-top: 100px;
 }
 
-.alert-messages{
-    content-visibility: hidden;
-    background-color: firebrick;
+a:link{
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.search-filter{ 
+    display: flex;
+    justify-content:space-around;
+}
+
+#profile-pic{
+    height: 120px;
+    width: 100px;
+}
+
+.header-style{ 
+    display: flex;
+    justify-content: space-around;
 }

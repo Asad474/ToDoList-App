@@ -1,1 +1,0 @@
-let delete_task = document.querySelector('#delete-task')
