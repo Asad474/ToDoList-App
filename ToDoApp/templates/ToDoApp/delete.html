@@ -4,7 +4,7 @@
         <form action="" method="post">
             {%csrf_token%}
             <h1 class="text-white pt-5 pb-2">Are you sure you want to delete "{{obj}}" task</h1>
-            <a class="btn btn-md btn-warning" href="{{request.META.HTTP_REFERER}}">Cancel</a>
-            <button class="btn btn-md btn-danger" type="submit">Delete</button>
+            <a class="btn btn-md btn-warning" href="{% url 'home' %}">Cancel</a>
+            <button class="mx-3 btn btn-md btn-danger" type="submit">Delete</button>
         </form>
 {% endblock %}
