@@ -185,7 +185,7 @@ def updateprofile(request):
         username = request.POST.get('username')
         all_users_username = MyUser.objects.all().values('username')
 
-        if {'username' : username} in all_users_username:
+        if {'username' : username} in all_users_username and username != user.username:
             messages.error(request, f'User with username "{username}" already exists!!!')
 
         if form.is_valid():
