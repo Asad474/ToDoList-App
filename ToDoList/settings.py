@@ -38,7 +38,7 @@ DEBUG = False
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
-ALLOWED_HOSTS = ['todolist-app-production.up.railway.app']
+ALLOWED_HOSTS = ['todolist-app-production.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -137,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_URL = '/media/'
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = (
     BASE_DIR / 'static' ,
