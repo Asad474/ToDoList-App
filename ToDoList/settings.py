@@ -35,8 +35,10 @@ SECRET_KEY = 'django-insecure-g%#df=bt_hln4oz8hazwm)wkjh15edbl@72hlbu*zue%3v1a$6
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['todolist-app-production.up.railway.app']
 
 
 # Application definition
