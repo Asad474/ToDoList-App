@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
+import environ
 
+env = environ.Env()
+environ.Env.read_env()
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -31,12 +34,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g%#df=bt_hln4oz8hazwm)wkjh15edbl@72hlbu*zue%3v1a$6'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
+DEBUG = True 
+# if not DEBUG:
+#     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
 ALLOWED_HOSTS = ['todolist-app-production.up.railway.app', '127.0.0.1']
 
@@ -151,11 +154,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = env('MAIL_HOST')
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'django.sendmail41@gmail.com'
-EMAIL_HOST_PASSWORD = 'gzlhdpqkjwxdismq'
-
+EMAIL_PORT = env('MAIL_PORT')
+EMAIL_HOST_USER = env('HOST_EMAIL')
+EMAIL_HOST_PASSWORD = env('HOST_PASSWORD')
 
 CORS_ALLOW_ALL_ORIGINS = True
