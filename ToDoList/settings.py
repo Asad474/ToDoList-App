@@ -34,10 +34,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = False
 # if not DEBUG:
 #     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
@@ -154,10 +154,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('MAIL_HOST')
+EMAIL_HOST = os.environ.get('MAIL_HOST')
 EMAIL_USE_TLS = True
-EMAIL_PORT = env('MAIL_PORT')
-EMAIL_HOST_USER = env('HOST_EMAIL')
-EMAIL_HOST_PASSWORD = env('HOST_PASSWORD')
+EMAIL_PORT = os.environ.get('MAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('HOST_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('HOST_PASSWORD')
 
 CORS_ALLOW_ALL_ORIGINS = True
