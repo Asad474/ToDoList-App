@@ -41,7 +41,7 @@ DEBUG = True
 # if not DEBUG:
 #     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
-ALLOWED_HOSTS = ['todolist-app-production.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 
 # Application definition
