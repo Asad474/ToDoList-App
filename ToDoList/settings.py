@@ -42,7 +42,7 @@ DEBUG = True
 # if not DEBUG:
 #     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1']
 
 
 # Application definition
@@ -146,7 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
 MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = (
