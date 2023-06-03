@@ -1,0 +1,32 @@
+.input-task{
+    margin-top: 100px;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.search-filter{ 
+    display: flex;
+    justify-content:space-around;
+}
+
+#profile-pic{
+    height: 120px;
+    width: 100px;
+}
+
+#profile-pic-userpage{
+    height: 240px;
+    width: 220px;
+}
+
+.header-style{ 
+    display: flex;
+    justify-content: space-around;
+}
