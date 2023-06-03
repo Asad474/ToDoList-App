@@ -4,6 +4,7 @@
 *.pyc
 __pycache__
 media
+db.sqlite3
 
 #Data.json
 data.json 
