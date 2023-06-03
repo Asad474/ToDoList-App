@@ -42,7 +42,7 @@ DEBUG = False
 # if not DEBUG:
 #     CSRF_TRUSTED_ORIGINS = ['https://todolist-app-production.up.railway.app']
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['todolist-app-1b48.onrender.com' ,'127.0.0.1']
 
 
 # Application definition
